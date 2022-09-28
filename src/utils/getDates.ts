@@ -1,24 +1,38 @@
 import { IDate } from '../types';
 
-const getDates = (year: number, month: number, date: number, day: number): Array<IDate> => {
-  const week_data: Array<IDate> = [];
-  const created_day: Date = new Date(year, month - 1, date);
-
-  for (let i = 0; i < 7; i++) {
-    let newDay: Date = new Date(created_day);
-    newDay.setDate(created_day.getDate() - (day - i));
+const getDates = (year: number, month: number): Array<IDate> => {
+  const dates: Array<IDate> = [];
+  const first_date: Date = new Date(year, month - 1, 1);
+  const first_day: number = first_date.getDay();
+  for (let i = 0; i <= first_day; i++) {
+    let newDate = new Date(first_date);
+    newDate.setDate(first_date.getDate() - (first_day - i));
 
     const data: IDate = {
-      year: newDay.getFullYear(),
-      month: newDay.getMonth() + 1,
-      date: newDay.getDate(),
-      day: newDay.getDay()
+      year: newDate.getFullYear(),
+      month: newDate.getMonth() + 1,
+      date: newDate.getDate(),
+      day: newDate.getDay()
     };
 
-    week_data.push(data);
+    dates.push(data);
   }
 
-  return week_data;
+  for (let i = 1; dates.length < 35; i++) {
+    let newDate = new Date(first_date);
+    newDate.setDate(first_date.getDate() + i);
+
+    const data: IDate = {
+      year: newDate.getFullYear(),
+      month: newDate.getMonth() + 1,
+      date: newDate.getDate(),
+      day: newDate.getDay()
+    };
+
+    dates.push(data);
+  }
+
+  return dates;
 }
 
 export default getDates;

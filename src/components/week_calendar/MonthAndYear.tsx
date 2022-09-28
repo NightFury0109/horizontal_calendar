@@ -17,8 +17,12 @@ const MonthAndYear: React.FC<Props> = ({ year, month }) => {
       </div>
 
       <div className="flex items-center">
-        <FaChevronLeft className='text-xl mr-3 cursor-pointer h-9 w-9 p-2 transition-all duration-300 rounded-full hover:bg-orange-300 hover:bg-opacity-20' />
-        <FaChevronRight className='text-xl cursor-pointer h-9 w-9 p-2 transition-all duration-300 rounded-full hover:bg-orange-300 hover:bg-opacity-20' />
+        <div className='flex justify-center items-center text-xl mr-3 cursor-pointer h-9 w-9 p-2 transition-all duration-300 rounded-full hover:bg-orange-300 hover:bg-opacity-20'>
+          <FaChevronLeft />
+        </div>
+        <div className="flex justify-center items-center text-xl cursor-pointer h-9 w-9 p-2 transition-all duration-300 rounded-full hover:bg-orange-300 hover:bg-opacity-20">
+          <FaChevronRight />
+        </div>
       </div>
     </div>
   )
