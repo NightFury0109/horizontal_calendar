@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 
 import MonthAndYear from './MonthAndYear';
 import DateItem from './DateItem';
+import DayItem from './DayItem';
 
 import getDates from '../../utils/getDates';
 import { IDate } from '../../types';
+
+const day_names: Array<string> = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
 const Calendar: React.FC = () => {
   const today_year: number = new Date().getFullYear();
@@ -16,23 +19,33 @@ const Calendar: React.FC = () => {
   const [month, setMonth] = useState<number>(today_month);
   const [date, setDate] = useState<number>(today_date);
   const [day, setDay] = useState<number>(today_day);
-  const [week_dates, setWeekDates] = useState<IDate[]>([]);
+  const [month_dates, setMonthDates] = useState<IDate[]>([]);
 
   useEffect(() => {
     const dates: Array<IDate> = getDates(year, month);
 
-    setWeekDates(dates);
+    setMonthDates(dates);
   }, []);
 
   return (
-    <div className='w-full md:w-[70vw] min-w-[320px] p-5 text-orange-700 bg-green-100 rounded-xl shadow-xl'>
+    <div className='w-full md:w-[70vw] min-w-[320px] pt-5 px-5 text-orange-700 bg-green-100 rounded-xl shadow-xl'>
       <MonthAndYear year={year} month={month} />
-      <hr className='mt-4 relative h-[3px] bg-orange-700' />
-      {/* <div className='flex justify-between mt-5'>
-        {week_dates.map((item, index) => (
-          <DateItem year={item.year} month={item.month} date={item.date} day={item.day} key={index} />
+
+      <hr className='my-4 relative h-[3px] bg-orange-700' />
+
+      <div className='grid grid-cols-7'>
+        {day_names.map((value, index) => (
+          <div className="flex justify-center" key={index}>
+            <DayItem day_name={value} />
+          </div>
         ))}
-      </div> */}
+
+        {month_dates.map((item, index) => (
+          <div className="flex justify-center w-full" key={index}>
+            <DateItem year={item.year} month={item.month} date={item.date} day={item.day} />
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
