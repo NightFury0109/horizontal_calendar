@@ -13,7 +13,7 @@ const DateItem: React.FC<Props> = ({ date, day }) => {
   return (
     <div className='flex flex-col items-center'>
       <DayItem day_name={day_names[day]} />
-      <span>{date}</span>
+      <span className='mt-3'>{date}</span>
     </div>
   )
 }

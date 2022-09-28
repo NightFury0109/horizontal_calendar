@@ -27,7 +27,7 @@ const Calendar: React.FC = () => {
   return (
     <div className='w-full md:w-[70vw] min-w-[320px] p-5 text-orange-700 bg-green-100 rounded-xl shadow-xl'>
       <MonthAndYear year={year} month={month} />
-
+      <hr className='mt-4 relative h-[3px] bg-orange-700' />
       <div className='flex justify-between mt-5'>
         {week_dates.map((item, index) => (
           <DateItem date={item.date} day={item.day} key={index} />
