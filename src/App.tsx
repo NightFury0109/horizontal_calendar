@@ -2,10 +2,12 @@ import React from 'react';
 
 import './App.scss';
 
+import Calendar from './components/week_calendar/Calendar';
+
 const App: React.FC = () => {
   return (
-    <div className="App">
-      Hello
+    <div className="flex justify-center items-center w-fll p-4 h-[100vh]">
+      <Calendar />
     </div>
   );
 }
