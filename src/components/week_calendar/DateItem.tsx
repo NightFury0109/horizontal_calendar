@@ -12,7 +12,7 @@ const DateItem: React.FC<IDate> = ({ year, month, day, date }) => {
   return (
     <>
       <div className='flex flex-col items-center w-full'>
-        <div className={classNames('mt-3 flex justify-center items-center text-lg cursor-pointer rounded-full h-12 w-12 p-2', { 'bg-orange-700 text-white': isActive, 'hover:bg-orange-300 hover:bg-opacity-20': !isActive })}>
+        <div className={classNames('mt-3 flex justify-center items-center text-lg cursor-pointer rounded-full h-12 w-12 p-2 transition-all duration-300', { 'bg-orange-700 text-white': isActive, 'hover:bg-orange-300 hover:bg-opacity-20': !isActive })}>
           <span>{date}</span>
         </div>
 

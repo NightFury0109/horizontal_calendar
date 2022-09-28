@@ -27,9 +27,39 @@ const Calendar: React.FC = () => {
     setMonthDates(dates);
   }, []);
 
+  const backward = (): void => {
+    if (month === 1) {
+      const dates: Array<IDate> = getDates(year - 1, 12);
+
+      setMonth(12);
+      setYear(year - 1);
+      setMonthDates(dates);
+    } else {
+      const dates: Array<IDate> = getDates(year, month - 1);
+
+      setMonth(month - 1);
+      setMonthDates(dates);
+    }
+  }
+
+  const forward = (): void => {
+    if (month === 12) {
+      const dates: Array<IDate> = getDates(year + 1, 1);
+
+      setMonth(1);
+      setYear(year + 1);
+      setMonthDates(dates);
+    } else {
+      const dates: Array<IDate> = getDates(year, month + 1);
+
+      setMonth(month + 1);
+      setMonthDates(dates);
+    }
+  }
+
   return (
     <div className='w-full md:w-[70vw] min-w-[320px] pt-5 px-5 text-orange-700 bg-green-100 rounded-xl shadow-xl'>
-      <MonthAndYear year={year} month={month} />
+      <MonthAndYear year={year} month={month} backward={backward} forward={forward} />
 
       <hr className='my-4 relative h-[3px] bg-orange-700' />
 
