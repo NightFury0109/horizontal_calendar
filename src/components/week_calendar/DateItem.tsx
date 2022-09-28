@@ -1,8 +1,20 @@
 import React from 'react';
 
-const DateItem: React.FC = () => {
+import DayItem from './DayItem';
+
+type Props = {
+  date: number,
+  day: number
+};
+
+const DateItem: React.FC<Props> = ({ date, day }) => {
+  const day_names: Array<string> = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+
   return (
-    <div>DateItem</div>
+    <div className='flex flex-col items-center'>
+      <DayItem day_name={day_names[day]} />
+      <span>{date}</span>
+    </div>
   )
 }
 

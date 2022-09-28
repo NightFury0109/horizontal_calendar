@@ -1,8 +1,12 @@
 import React from 'react';
 
-const DayItem: React.FC = () => {
+type Props = {
+  day_name: string;
+}
+
+const DayItem: React.FC<Props> = ({ day_name }) => {
   return (
-    <div>DayItem</div>
+    <div className=' text-lg font-medium'>{day_name}</div>
   )
 }
 

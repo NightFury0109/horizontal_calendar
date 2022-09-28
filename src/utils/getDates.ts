@@ -1,15 +1,18 @@
-const getDates = (year: number, month: number, date: number, day: number): Array<object> => {
-  const week_data: Array<object> = [];
+import { IDate } from '../types';
+
+const getDates = (year: number, month: number, date: number, day: number): Array<IDate> => {
+  const week_data: Array<IDate> = [];
   const created_day: Date = new Date(year, month - 1, date);
 
-  for (let i = 1; i <= 7; i++) {
+  for (let i = 0; i < 7; i++) {
     let newDay: Date = new Date(created_day);
     newDay.setDate(created_day.getDate() - (day - i));
 
-    const data: object = {
+    const data: IDate = {
       year: newDay.getFullYear(),
       month: newDay.getMonth() + 1,
-      date: newDay.getDate()
+      date: newDay.getDate(),
+      day: newDay.getDay()
     };
 
     week_data.push(data);

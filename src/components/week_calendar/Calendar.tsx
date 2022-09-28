@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import Month from './MonthAndYear';
-import DayItem from './DayItem';
+import MonthAndYear from './MonthAndYear';
 import DateItem from './DateItem';
 
 import getDates from '../../utils/getDates';
+import { IDate } from '../../types';
 
 const Calendar: React.FC = () => {
   const today_year: number = new Date().getFullYear();
@@ -12,16 +12,27 @@ const Calendar: React.FC = () => {
   const today_date: number = new Date().getDate();
   const today_day: number = new Date().getDay();
 
-  const [year, setYear] = useState(today_year);
-  const [month, setMonth] = useState(today_month);
-  const [date, setDate] = useState(today_date);
-  const [day, setDay] = useState(today_day);
+  const [year, setYear] = useState<number>(today_year);
+  const [month, setMonth] = useState<number>(today_month);
+  const [date, setDate] = useState<number>(today_date);
+  const [day, setDay] = useState<number>(today_day);
+  const [week_dates, setWeekDates] = useState<IDate[]>([]);
 
-  getDates(year, month, date, day);
+  useEffect(() => {
+    const dates: Array<IDate> = getDates(year, month, date, day);
+
+    setWeekDates(dates);
+  }, []);
 
   return (
-    <div className='w-full md:w-[70vw] p-5 bg-green-100 rounded-xl shadow-xl'>
-      <Month />
+    <div className='w-full md:w-[70vw] min-w-[320px] p-5 text-orange-700 bg-green-100 rounded-xl shadow-xl'>
+      <MonthAndYear year={year} month={month} />
+
+      <div className='flex justify-between mt-5'>
+        {week_dates.map((item, index) => (
+          <DateItem date={item.date} day={item.day} key={index} />
+        ))}
+      </div>
     </div>
   )
 }
