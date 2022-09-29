@@ -11,8 +11,6 @@ type Props = {
 };
 
 const MonthAndYear: React.FC<Props> = ({ year, month, selectMonth, selectYear, backward, forward }) => {
-  const months: Array<string> = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
   const [month_value, setMonth] = useState<number>(month);
   const [year_value, setYear] = useState<number>(year);
 
@@ -29,13 +27,13 @@ const MonthAndYear: React.FC<Props> = ({ year, month, selectMonth, selectYear, b
     forward();
   }
 
-  const changeMonth = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setMonth(e.target.value);
+  const changeMonth = (e: React.ChangeEvent<HTMLSelectElement>): void => {
+    setMonth(parseInt(e.target.value));
     selectMonth(parseInt(e.target.value));
   }
 
   const changeYear = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setYear(e.target.value);
+    setYear(parseInt(e.target.value));
     selectYear(parseInt(e.target.value));
   }
 

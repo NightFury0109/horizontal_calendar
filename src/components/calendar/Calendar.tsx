@@ -12,13 +12,10 @@ const day_names: Array<string> = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT
 const Calendar: React.FC = () => {
   const today_year: number = new Date().getFullYear();
   const today_month: number = new Date().getMonth() + 1;
-  const today_date: number = new Date().getDate();
-  const today_day: number = new Date().getDay();
 
   const [year, setYear] = useState<number>(today_year);
   const [month, setMonth] = useState<number>(today_month);
-  const [date, setDate] = useState<number>(today_date);
-  const [day, setDay] = useState<number>(today_day);
+
   const [selectedDate, setSelectedDate] = useState<IDate>({
     year: 0,
     month: 0,
@@ -32,7 +29,7 @@ const Calendar: React.FC = () => {
     const dates: Array<IDate> = getDates(year, month);
 
     setMonthDates(dates);
-  }, []);
+  }, [year, month]);
 
   const backward = (): void => {
     if (month === 1) {

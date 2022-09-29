@@ -28,7 +28,7 @@ const DateItem: React.FC<Props> = ({ year, month, day, date, selectedDate, selec
     } else if (selectedDate.year === year && selectedDate.month === month && selectedDate.date === date) {
       setIsActive(true);
     }
-  }, [selectedDate, year, month, date, day]);
+  }, [selectedDate, year, month, date, day, isToday]);
 
   const onSelect = (): void => {
     const selected_date: IDate = {
