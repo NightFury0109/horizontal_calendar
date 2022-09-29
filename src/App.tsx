@@ -2,7 +2,7 @@ import React from 'react';
 
 import './App.scss';
 
-import Calendar from './components/week_calendar/Calendar';
+import Calendar from './components/calendar/Calendar';
 
 const App: React.FC = () => {
   return (

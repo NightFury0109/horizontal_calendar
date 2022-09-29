@@ -65,9 +65,6 @@ const Calendar: React.FC = () => {
   }
 
   const selectDate = (selected_date: IDate): void => {
-    // localStorage.setItem("year", selected_date.year.toString());
-    // localStorage.setItem("month", selected_date.month.toString());
-    // localStorage.setItem("date", selected_date.date.toString());
     setSelectedDate(selected_date);
   }
 
@@ -78,9 +75,16 @@ const Calendar: React.FC = () => {
     setMonthDates(dates);
   }
 
+  const selectYear = (selectedYear: number): void => {
+    const dates: Array<IDate> = getDates(selectedYear, month);
+
+    setYear(selectedYear);
+    setMonthDates(dates);
+  }
+
   return (
     <div className='w-full md:w-[70vw] min-w-[340px] pt-5 px-5 text-orange-700 bg-green-100 rounded-xl shadow-xl'>
-      <MonthAndYear year={year} month={month} selectMonth={selectMonth} backward={backward} forward={forward} />
+      <MonthAndYear year={year} month={month} selectMonth={selectMonth} selectYear={selectYear} backward={backward} forward={forward} />
 
       <hr className='my-4 relative h-[3px] bg-orange-700' />
 

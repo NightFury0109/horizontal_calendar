@@ -2,6 +2,7 @@
   text-align: center;
 }
 
-select:focus {
+select:focus,
+input:focus {
   outline: none !important;
 }
