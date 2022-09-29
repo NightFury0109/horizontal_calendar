@@ -4,8 +4,8 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 type Props = {
   year: number,
   month: number,
-  backward: any,
-  forward: any
+  backward: () => void,
+  forward: () => void
 };
 
 const MonthAndYear: React.FC<Props> = ({ year, month, backward, forward }) => {

@@ -19,6 +19,13 @@ const Calendar: React.FC = () => {
   const [month, setMonth] = useState<number>(today_month);
   const [date, setDate] = useState<number>(today_date);
   const [day, setDay] = useState<number>(today_day);
+  const [selectedDate, setSelectedDate] = useState<IDate>({
+    year: 0,
+    month: 0,
+    date: 0,
+    day: 0
+  });
+
   const [month_dates, setMonthDates] = useState<IDate[]>([]);
 
   useEffect(() => {
@@ -57,8 +64,16 @@ const Calendar: React.FC = () => {
     }
   }
 
+  const selectDate = (selected_date: IDate): void => {
+    localStorage.setItem("year", selected_date.year.toString());
+    localStorage.setItem("month", selected_date.month.toString());
+    localStorage.setItem("date", selected_date.date.toString());
+
+    setSelectedDate(selected_date);
+  }
+
   return (
-    <div className='w-full md:w-[70vw] min-w-[320px] pt-5 px-5 text-orange-700 bg-green-100 rounded-xl shadow-xl'>
+    <div className='w-full md:w-[70vw] min-w-[340px] pt-5 px-5 text-orange-700 bg-green-100 rounded-xl shadow-xl'>
       <MonthAndYear year={year} month={month} backward={backward} forward={forward} />
 
       <hr className='my-4 relative h-[3px] bg-orange-700' />
@@ -72,7 +87,7 @@ const Calendar: React.FC = () => {
 
         {month_dates.map((item, index) => (
           <div className="flex justify-center w-full" key={index}>
-            <DateItem year={item.year} month={item.month} date={item.date} day={item.day} />
+            <DateItem year={item.year} month={item.month} date={item.date} day={item.day} selectedDate={selectedDate} selectDate={selectDate} />
           </div>
         ))}
       </div>
