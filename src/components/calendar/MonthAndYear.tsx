@@ -62,11 +62,11 @@ const MonthAndYear: React.FC<Props> = ({ year, month, selectMonth, selectYear, b
           <option value="11">November</option>
           <option value="12">December</option>
         </select>
-        {/* <span className='text-2xl font-normal'>{year_value}</span> */}
+
         <input
           type="number"
           value={year_value}
-          className='text-2xl font-normal bg-transparent w-[100px] cursor-pointer'
+          className='text-2xl font-normal bg-transparent w-[80px] cursor-pointer'
           onChange={changeYear}
         />
       </div>
