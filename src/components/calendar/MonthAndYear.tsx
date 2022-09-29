@@ -29,12 +29,12 @@ const MonthAndYear: React.FC<Props> = ({ year, month, selectMonth, selectYear, b
     forward();
   }
 
-  const changeMonth = (e: any): void => {
+  const changeMonth = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setMonth(e.target.value);
     selectMonth(parseInt(e.target.value));
   }
 
-  const changeYear = (e: any): void => {
+  const changeYear = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setYear(e.target.value);
     selectYear(parseInt(e.target.value));
   }
